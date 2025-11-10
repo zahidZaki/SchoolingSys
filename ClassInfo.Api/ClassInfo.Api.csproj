@@ -27,4 +27,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassInfo.BLL\ClassInfo.BLL.csproj" />
+  </ItemGroup>
 </Project>

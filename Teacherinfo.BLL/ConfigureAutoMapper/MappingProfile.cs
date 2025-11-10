@@ -17,3 +17,4 @@ namespace Teacherinfo.BLL.ConfigureAutoMapper
         }
     }
 }
+  

@@ -17,4 +17,9 @@
 		<PackageReference Include="Twilio.AspNet.Common" Version="8.0.2" />
 		<!--<PackageReference Include="TwilioFluent.TwiML" Version="1.0.1" />-->
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ClassInfo.DLL\ClassInfo.DLL.csproj" />
+	  <ProjectReference Include="..\ClassInfo.Utils\ClassInfo.Utils.csproj" />
+	</ItemGroup>
 </Project>

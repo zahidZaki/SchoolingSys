@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using StudentInfo.BLL.Concrete;
+using StudentInfo.BLL.Interfaces;
+using StudentInfo.DLL.Concrete.Base;
 using StudentInfo.DLL.Interfaces.IBase;
 
 namespace StudentInfo.BLL.RegisterServices
@@ -13,13 +16,10 @@ namespace StudentInfo.BLL.RegisterServices
         public static IServiceCollection RegisterDataServices(this IServiceCollection services)
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            //services.AddScoped<IUnitOfWork, UnitOfWork>();
-            //services.AddTransient(typeof(IUsernameAndPasswordIssuesScenarioService), typeof(UsernameAndPasswordIssuesScenarioService));
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddTransient(typeof(IStudentService), typeof(StudentService));
 
             return services;
         }
