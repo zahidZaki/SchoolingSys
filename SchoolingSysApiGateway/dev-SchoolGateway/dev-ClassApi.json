@@ -1,0 +1,74 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/ClassInfo/GetAllClasses",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "POST",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7048
+                }
+            ],
+            "UpstreamPathTemplate": "/cls/classInfo/getAllClass",
+            "UpstreamHttpMethod": [ "POST" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/ClassInfo/GetClassById",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "GET",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7048
+                }
+            ],
+            "UpstreamPathTemplate": "/cls/classInfo/getClassById",
+            "UpstreamHttpMethod": [ "GET" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/ClassInfo/AddClass",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "POST",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7048
+                }
+            ],
+            "UpstreamPathTemplate": "/cls/classInfo/addClass",
+            "UpstreamHttpMethod": [ "POST" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/ClassInfo/UpdateClass",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "PUT",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7048
+                }
+            ],
+            "UpstreamPathTemplate": "/cls/classInfo/updateClass",
+            "UpstreamHttpMethod": [ "PUT" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/ClassInfo/DeleteClass",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "DELETE",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7048
+                }
+            ],
+            "UpstreamPathTemplate": "/cls/classInfo/deleteClass",
+            "UpstreamHttpMethod": [ "DELETE" ]
+        }
+    ]
+}

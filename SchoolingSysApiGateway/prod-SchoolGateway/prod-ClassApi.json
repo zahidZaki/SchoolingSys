@@ -1,0 +1,74 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/Student/GetAllStudent",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "POST",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7112
+                }
+            ],
+            "UpstreamPathTemplate": "/tf/teacher/getAllTeacher",
+            "UpstreamHttpMethod": [ "POST" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/Teacher/GetTeacherById",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "GET",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7112
+                }
+            ],
+            "UpstreamPathTemplate": "/tf/student/getTeacherById",
+            "UpstreamHttpMethod": [ "GET" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/Teacher/AddTeacher",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "POST",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7112
+                }
+            ],
+            "UpstreamPathTemplate": "/tf/student/addTeacher",
+            "UpstreamHttpMethod": [ "POST" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/Teacher/UpdateTeacher",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "PUT",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7112
+                }
+            ],
+            "UpstreamPathTemplate": "/tf/teacher/updateTeacher",
+            "UpstreamHttpMethod": [ "PUT" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/Teacher/DeleteTeacher",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "DELETE",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7112
+                }
+            ],
+            "UpstreamPathTemplate": "/tf/teacher/deleteTeacher",
+            "UpstreamHttpMethod": [ "DELETE" ]
+        }
+    ]
+}

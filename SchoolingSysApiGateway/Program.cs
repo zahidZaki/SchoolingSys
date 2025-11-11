@@ -27,122 +27,117 @@ builder.Host.UseSerilog((ctx, lc) => lc
 
 
 
-//if (builder.Environment.IsProduction())
-//{
-//    string baseFolder = "prod-telecareapigatewayconfiguration";
+if (builder.Environment.IsProduction())
+{
+    string baseFolder = "prod-SchoolGateway";
 
-//    string[] configPaths = {
-//        Path.Combine(baseFolder, "prod-telecareapigatewayconfiguration.json"),
-//        Path.Combine(baseFolder, "prod-sso.json"),
-//        Path.Combine(baseFolder, "prod-ci.json"),
-//        Path.Combine(baseFolder, "prod-scheduling.json"),
-//        Path.Combine(baseFolder, "prod-helpdesk.json"),
-//        Path.Combine(baseFolder, "prod-teleFinance.json")
-//    };
+    string[] configPaths = {
+            Path.Combine(baseFolder, "prod-SchoolGateway.json"),
+            Path.Combine(baseFolder, "prod-ClassApi.json"),
+            Path.Combine(baseFolder, "prod-TeacherApi.json"),
+            Path.Combine(baseFolder, "prod-StudentApi.json")
+        };
 
-//    const string mergedConfigPath = "ocelot.merged.json";
-//    try
-//    {
-//        var combinedRoutes = new JArray();
-//        var routeSet = new HashSet<string>();
-//        JObject? globalConfig = null;
+    const string mergedConfigPath = "ocelot.merged.json";
+    try
+    {
+        var combinedRoutes = new JArray();
+        var routeSet = new HashSet<string>();
+        JObject? globalConfig = null;
 
-//        foreach (var path in configPaths)
-//        {
-//            if (!File.Exists(path))
-//                throw new FileNotFoundException($"Missing config file: {path}");
+        foreach (var path in configPaths)
+        {
+            if (!File.Exists(path))
+                throw new FileNotFoundException($"Missing config file: {path}");
 
-//            var config = JObject.Parse(File.ReadAllText(path));
-//            var routes = config["Routes"] as JArray;
+            var config = JObject.Parse(File.ReadAllText(path));
+            var routes = config["Routes"] as JArray;
 
-//            if (routes != null)
-//            {
-//                foreach (var route in routes)
-//                {
-//                    var routeKey = route.ToString(Formatting.None);
-//                    if (routeSet.Add(routeKey))
-//                        combinedRoutes.Add(route);
-//                }
-//            }
+            if (routes != null)
+            {
+                foreach (var route in routes)
+                {
+                    var routeKey = route.ToString(Formatting.None);
+                    if (routeSet.Add(routeKey))
+                        combinedRoutes.Add(route);
+                }
+            }
 
-//            if (path.Contains("prod-telecareapigatewayconfiguration.json"))
-//                globalConfig = config["GlobalConfiguration"] as JObject;
-//        }
+            if (path.Contains("prod-SchoolGateway.json"))
+                globalConfig = config["GlobalConfiguration"] as JObject;
+        }
 
-//        var mergedConfig = new JObject
-//        {
-//            ["Routes"] = combinedRoutes,
-//            ["GlobalConfiguration"] = globalConfig ?? new JObject()
-//        };
+        var mergedConfig = new JObject
+        {
+            ["Routes"] = combinedRoutes,
+            ["GlobalConfiguration"] = globalConfig ?? new JObject()
+        };
 
-//        File.WriteAllText(mergedConfigPath, mergedConfig.ToString(Formatting.Indented));
-//        builder.Configuration.AddJsonFile(mergedConfigPath, optional: false, reloadOnChange: true);
-//    }
-//    catch (Exception ex)
-//    {
-//        Console.WriteLine($"Error merging Ocelot configuration: {ex.Message}");
-//        throw;
-//    }
-//}
-//else
-//{
-//    string baseFolder = "dev-telecareapigatewayconfiguration";
+        File.WriteAllText(mergedConfigPath, mergedConfig.ToString(Formatting.Indented));
+        builder.Configuration.AddJsonFile(mergedConfigPath, optional: false, reloadOnChange: true);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error merging Ocelot configuration: {ex.Message}");
+        throw;
+    }
+}
+else
+{
+    string baseFolder = "dev-SchoolGateway";
 
-//    string[] configPaths = {
-//        Path.Combine(baseFolder, "dev-telecareapigatewayconfiguration.json"),
-//        Path.Combine(baseFolder, "dev-scheduling.json"),
-//        Path.Combine(baseFolder, "dev-helpdesk.json"),
-//        Path.Combine(baseFolder, "dev-sso.json"),
-//        Path.Combine(baseFolder, "dev-teleFinance.json")
+    string[] configPaths = {
+            Path.Combine(baseFolder, "dev-SchoolGateway.json"),
+            Path.Combine(baseFolder, "dev-ClassApi.json"),
+            Path.Combine(baseFolder, "dev-TeacherApi.json"),
+            Path.Combine(baseFolder, "dev-StudentApi.json")
+        };
 
+    const string mergedConfigPath = "ocelot.merged.json";
+    try
+    {
+        var combinedRoutes = new JArray();
+        var routeSet = new HashSet<string>();
+        JObject? globalConfig = null;
 
-//    };
+        foreach (var path in configPaths)
+        {
+            if (!File.Exists(path))
+                throw new FileNotFoundException($"Missing config file: {path}");
 
-//    const string mergedConfigPath = "ocelot.merged.json";
-//    try
-//    {
-//        var combinedRoutes = new JArray();
-//        var routeSet = new HashSet<string>();
-//        JObject? globalConfig = null;
+            var config = JObject.Parse(File.ReadAllText(path));
+            var routes = config["Routes"] as JArray;
 
-//        foreach (var path in configPaths)
-//        {
-//            if (!File.Exists(path))
-//                throw new FileNotFoundException($"Missing config file: {path}");
+            if (routes != null)
+            {
+                foreach (var route in routes)
+                {
+                    var routeKey = route.ToString(Formatting.None);
+                    if (routeSet.Add(routeKey))
+                        combinedRoutes.Add(route);
+                }
+            }
 
-//            var config = JObject.Parse(File.ReadAllText(path));
-//            var routes = config["Routes"] as JArray;
+            if (path.Contains("dev-SchoolGateway.json"))
+                globalConfig = config["GlobalConfiguration"] as JObject;
+        }
 
-//            if (routes != null)
-//            {
-//                foreach (var route in routes)
-//                {
-//                    var routeKey = route.ToString(Formatting.None);
-//                    if (routeSet.Add(routeKey))
-//                        combinedRoutes.Add(route);
-//                }
-//            }
+        var mergedConfig = new JObject
+        {
+            ["Routes"] = combinedRoutes,
+            ["GlobalConfiguration"] = globalConfig ?? new JObject()
+        };
 
-//            if (path.Contains("dev-telecareapigatewayconfiguration.json"))
-//                globalConfig = config["GlobalConfiguration"] as JObject;
-//        }
-
-//        var mergedConfig = new JObject
-//        {
-//            ["Routes"] = combinedRoutes,
-//            ["GlobalConfiguration"] = globalConfig ?? new JObject()
-//        };
-
-//        File.WriteAllText(mergedConfigPath, mergedConfig.ToString(Formatting.Indented));
-//        builder.Configuration.AddJsonFile(mergedConfigPath, optional: false, reloadOnChange: true);
-//    }
-//    catch (Exception ex)
-//    {
-//        Console.WriteLine($"Error merging Ocelot configuration: {ex.Message}");
-//        throw;
-//    }
-//    //builder.Configuration.AddJsonFile("dev-telecareapigatewayconfiguration.json", optional: false, reloadOnChange: true);
-//}
+        File.WriteAllText(mergedConfigPath, mergedConfig.ToString(Formatting.Indented));
+        builder.Configuration.AddJsonFile(mergedConfigPath, optional: false, reloadOnChange: true);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error merging Ocelot configuration: {ex.Message}");
+        throw;
+    }
+    //    //builder.Configuration.AddJsonFile("dev-SchoolGateway.json", optional: false, reloadOnChange: true);
+}
 
 
 // Register Ocelot services
@@ -178,7 +173,7 @@ builder.Services.RegisterDataServices();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(option =>
 {
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "TeleCareHelpDesk-Gateway", Version = "v1" });
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "SchoolingSys-Gateway", Version = "v1" });
     option.DocumentFilter<SwaggerExcludeOcelotEndpoints>();
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -204,7 +199,7 @@ builder.Services.AddSwaggerGen(option =>
         }
     });
 });
-builder.Services.AddCors(options => options.AddPolicy("TeleHelpDeskAPI",
+builder.Services.AddCors(options => options.AddPolicy("SchoolingSysAPI",
     policy => policy
     .AllowAnyOrigin()
     .AllowAnyMethod()
@@ -217,7 +212,7 @@ builder.Services.AddCors(options => options.AddPolicy("TeleHelpDeskAPI",
 var app = builder.Build();
 
 
-app.UseCors("TeleHelpDeskAPI");
+app.UseCors("SchoolingSys");
 app.UseSwagger();
 app.UseSwaggerUI();
 

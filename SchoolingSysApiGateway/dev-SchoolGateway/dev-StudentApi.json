@@ -1,0 +1,74 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/Student/GetAllStudent",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "POST",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7252
+                }
+            ],
+            "UpstreamPathTemplate": "/std/Student/getAllStudent",
+            "UpstreamHttpMethod": [ "POST" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/Student/GetStudentById",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "GET",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7252
+                }
+            ],
+            "UpstreamPathTemplate": "/std/Student/getStudentById",
+            "UpstreamHttpMethod": [ "GET" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/Student/AddStudent",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "POST",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7252
+                }
+            ],
+            "UpstreamPathTemplate": "/std/student/addStudent",
+            "UpstreamHttpMethod": [ "POST" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/Student/UpdateStudent",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "PUT",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7252
+                }
+            ],
+            "UpstreamPathTemplate": "/std/student/updateStudent",
+            "UpstreamHttpMethod": [ "PUT" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/Student/DeleteStudent",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "DELETE",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7252
+                }
+            ],
+            "UpstreamPathTemplate": "/std/student/deleteStudent",
+            "UpstreamHttpMethod": [ "DELETE" ]
+        }
+    ]
+}

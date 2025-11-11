@@ -23,7 +23,7 @@ namespace StudentInfo.BLL.Concrete
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<(List<StudentDto> data, string record, int totalCount)> GetAll(PaginationDto request)
+        public async Task<(List<StudentDto> data, string record, int totalCount)> GetAllStudent(PaginationDto request)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace StudentInfo.BLL.Concrete
 
 
 
-        public async Task<StudentDto?> GetById(int id)
+        public async Task<StudentDto?> GetStudentById(int id)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace StudentInfo.BLL.Concrete
             }
 
         }
-        public async Task<ResponseObj> Add(StudentDto model)
+        public async Task<ResponseObj> AddStudent(StudentDto model)
         {
             try
             {
@@ -104,16 +104,16 @@ namespace StudentInfo.BLL.Concrete
                 throw;
             }
         }
-        public async Task<ResponseObj> Update(StudentDto systemOutageDto)
+        public async Task<ResponseObj> UpdateStudent(StudentDto dto)
         {
             try
             {
-                var res = await _unitOfWork.StudentDbContext.Students.Where(x => x.StdId == systemOutageDto.StdId).FirstOrDefaultAsync();
+                var res = await _unitOfWork.StudentDbContext.Students.Where(x => x.StdId == dto.StdId).FirstOrDefaultAsync();
                 if (res == null)
                 {
                     return (new ResponseObj { data = null });
                 }
-                res.StdId = systemOutageDto.StdId;
+                res.StdId =dto.StdId;
 
 
                 _unitOfWork.StudentDbContext.Students.Update(res);
@@ -127,21 +127,21 @@ namespace StudentInfo.BLL.Concrete
 
             }
         }
-        public async Task<string> Delete(int id)
+        public async Task<string> DeleteStudent(int id)
         {
             try
             {
                 var entity = await _unitOfWork.StudentDbContext.Students.FindAsync(id);
                 if (entity == null)
                 {
-                    return $"System Outage with ID  does not exist.";
+                    return $"Student with ID  does not exist.";
                 }
 
 
                 _unitOfWork.StudentDbContext.Students.Remove(entity);
                 await _unitOfWork.StudentDbContext.SaveChangesAsync();
 
-                return "System Outage deleted successfully.";
+                return "Student deleted successfully.";
             }
             catch (Exception)
             {
@@ -149,11 +149,11 @@ namespace StudentInfo.BLL.Concrete
             }
         }
 
-        public async Task<ResponseObj> AddOneHourToOutage(StudentDto systemOutageDto)
+        public async Task<ResponseObj> AddOneHourToOutage(StudentDto dto)
         {
             try
             {
-                var entity = await _unitOfWork.StudentDbContext.Students.Where(x => x.StdId == systemOutageDto.StdId).FirstOrDefaultAsync();
+                var entity = await _unitOfWork.StudentDbContext.Students.Where(x => x.StdId == dto.StdId).FirstOrDefaultAsync();
                 if (entity == null)
                 {
                     return (new ResponseObj { data = null });

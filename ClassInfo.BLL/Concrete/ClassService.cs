@@ -23,7 +23,7 @@ namespace ClassInfo.BLL.Concrete
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<(List<ClassDto> data, string record, int totalCount)> GetAll(PaginationDto request)
+        public async Task<(List<ClassDto> data, string record, int totalCount)> GetAllClasses(PaginationDto request)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace ClassInfo.BLL.Concrete
 
 
 
-        public async Task<ClassDto?> GetById(int id)
+        public async Task<ClassDto?> GetClassById(int id)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace ClassInfo.BLL.Concrete
             }
 
         }
-        public async Task<ResponseObj> Add(ClassDto model)
+        public async Task<ResponseObj> AddClass(ClassDto model)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace ClassInfo.BLL.Concrete
                 throw;
             }
         }
-        public async Task<ResponseObj> Update(ClassDto systemOutageDto)
+        public async Task<ResponseObj> UpdateClass(ClassDto systemOutageDto)
         {
             try
             {
@@ -127,7 +127,7 @@ namespace ClassInfo.BLL.Concrete
 
             }
         }
-        public async Task<string> Delete(int id)
+        public async Task<string> DeleteClass(int id)
         {
             try
             {
@@ -145,52 +145,6 @@ namespace ClassInfo.BLL.Concrete
             }
             catch (Exception)
             {
-                throw;
-            }
-        }
-
-        public async Task<ResponseObj> AddOneHourToOutage(ClassDto systemOutageDto)
-        {
-            try
-            {
-                var entity = await _unitOfWork.ClassesDbContext.Classes.Where(x => x.ClsId == systemOutageDto.ClsId).FirstOrDefaultAsync();
-                if (entity == null)
-                {
-                    return (new ResponseObj { data = null });
-                }
-
-                //entity.HsoEndTime = DateTime.Now.ToEST().AddHours(1);
-                //entity.HsoModifiedByName = systemOutageDto.HsoModifiedByName;
-
-                _unitOfWork.ClassesDbContext.Classes.Update(entity);
-                await _unitOfWork.ClassesDbContext.SaveChangesAsync();
-
-
-
-                return (new ResponseObj { data = entity });
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-        public async Task<(List<ClassDto> data, string record)> GetFacilityDownTime()
-        {
-            try
-            {
-                var resultList = await _unitOfWork.ClassesDbContext
-            .LoadStoredProc("[usp_GetFacilityDownTime]")
-            .ExecuteStoredProc<ClassDto>();
-
-                string recordStatus = (resultList != null && resultList.Any()) ? "RecordsFound" : "NoRecords";
-
-                return (resultList ?? new List<ClassDto>(), recordStatus);
-            }
-            catch (Exception)
-            {
-
                 throw;
             }
         }

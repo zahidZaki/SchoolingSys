@@ -1,0 +1,18 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/ProfileAccess/GetProfileAndRoleAccess",
+            "DownstreamScheme": "https",
+            "DownstreamHttpMethod": "POST",
+            "RouteIsCaseSensitive": false,
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5135
+                }
+            ],
+            "UpstreamPathTemplate": "/tf/profileAccess/getProfileAndRoleAccess",
+            "UpstreamHttpMethod": [ "POST" ]
+        }
+    ]
+}

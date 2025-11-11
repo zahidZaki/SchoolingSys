@@ -13,36 +13,36 @@ namespace ClassInfo.Api.Controllers
     [ApiController]
     public class ClassInfoController : BaseController
     {
-            private readonly IClassService _teacherService;
+            private readonly IClassService _classService;
 
-            public ClassInfoController(IConfiguration configuration, IMapper mapper, IClassService teacherService)
+            public ClassInfoController(IConfiguration configuration, IMapper mapper, IClassService classService)
                 : base(configuration, mapper)
             {
-                _teacherService = teacherService;
+            _classService = _classService;
             }
 
             [HttpPost]
-            [Route("GetAllTeacher")]
-            public async Task<IActionResult> GetAllSystemOutages([FromBody] PaginationDto paginationDto)
+            [Route("GetAllClasses")]
+            public async Task<IActionResult> GetAllClasses([FromBody] PaginationDto paginationDto)
             {
-                var (resultList, records, totalCount) = await _teacherService.GetAll(paginationDto);
+                var (resultList, records, totalCount) = await _classService.GetAllClasses(paginationDto);
                 if (resultList == null)
                 {
-                    return new JsonResult(new { status = ApiResponseStatus.Success.ToInt(), msg = "System Outage not found." });
+                    return new JsonResult(new { status = ApiResponseStatus.Success.ToInt(), msg = "Class not found." });
                 }
                 return new JsonResult(new { status = ApiResponseStatus.Success.ToInt(), msg = ResponseMessages.Success.GetMessage(), data = resultList, records = records, totalCount });
             }
 
             [HttpGet]
-            [Route("GetTeacherById")]
-            public async Task<JsonResult> GetSystemOutageById(int id)
+            [Route("GetClassById")]
+            public async Task<JsonResult> GetClassById(int id)
             {
                 ResponseObj obj = new ResponseObj();
-                obj.data = await _teacherService.GetById(id);
+                obj.data = await _classService.GetClassById(id);
 
                 if (obj.data == null)
                 {
-                    return new JsonResult(new { status = ApiResponseStatus.Failure.ToInt(), msg = "System Outage not found." });
+                    return new JsonResult(new { status = ApiResponseStatus.Failure.ToInt(), msg = "Class not found." });
                 }
 
                 return new JsonResult(new
@@ -55,20 +55,20 @@ namespace ClassInfo.Api.Controllers
 
 
             [HttpPost]
-            [Route("AddTeacher")]
-            public async Task<IActionResult> AddSystemOutage([FromBody] ClassDto systemOutageDto)
+            [Route("AddClass")]
+            public async Task<IActionResult> AddClass([FromBody] ClassDto systemOutageDto)
             {
-                var resultList = await _teacherService.Add(systemOutageDto);
+                var resultList = await _classService.AddClass(systemOutageDto);
 
                 return new JsonResult(new { status = ApiResponseStatus.Success.ToInt(), msg = ResponseMessages.Success.GetMessage(), data = resultList });
 
             }
 
             [HttpPut]
-            [Route("UpdateTeacher")]
-            public async Task<IActionResult> UpdateSystemOutage([FromBody] ClassDto systemOutageDto)
+            [Route("UpdateClass")]
+            public async Task<IActionResult> UpdateClass([FromBody] ClassDto systemOutageDto)
             {
-                var res = await _teacherService.Update(systemOutageDto);
+                var res = await _classService.UpdateClass(systemOutageDto);
 
 
                 if (res != null)
@@ -97,44 +97,23 @@ namespace ClassInfo.Api.Controllers
             }
 
             [HttpDelete]
-            [Route("DeleteTeacher")]
-            public async Task<IActionResult> DeleteSystemOutage(int id)
+            [Route("DeleteClass")]
+            public async Task<IActionResult> DeleteClass(int id)
             {
-                var res = await _teacherService.Delete(id);
+                var res = await _classService.DeleteClass(id);
 
 
-                if (res == "System Outage deleted successfully.")
+                if (res == "Class deleted successfully.")
                 {
                     return new JsonResult(new { status = ApiResponseStatus.Success.ToInt(), msg = res });
                 }
-                if (res == "System Outage with ID  does not exist.")
+                if (res == "Class ID  does not exist.")
                 {
                     return new JsonResult(new { status = ApiResponseStatus.Success.ToInt(), msg = res });
                 }
                 return new JsonResult(new { status = ApiResponseStatus.Success.ToInt(), msg = ResponseMessages.ErrorOccurred.GetMessage() });
 
             }
-            [HttpPost]
-            [Route("ToggleOneHour")]
-            public async Task<IActionResult> ToggleOneHour([FromBody] ClassDto systemOutageDto)
-            {
-                var res = await _teacherService.AddOneHourToOutage(systemOutageDto);
-
-                if (res == null)
-                {
-                    return new JsonResult(new { status = ApiResponseStatus.Success.ToInt(), msg = ResponseMessages.Success.GetMessage() });
-                }
-
-                return new JsonResult(new { status = ApiResponseStatus.Success.ToInt(), msg = ResponseMessages.Success.GetMessage(), date = res.data });
-            }
-
-            [HttpGet]
-            [Route("GetFacilityDownTime")]
-            public async Task<JsonResult> GetFacilityDownTime()
-            {
-
-                var res = await _teacherService.GetFacilityDownTime();
-                return new JsonResult(new { status = ApiResponseStatus.Success.ToInt(), msg = ResponseMessages.Success.GetMessage(), data = res.data, records = res.record });
-            }
+         
         }
     }
