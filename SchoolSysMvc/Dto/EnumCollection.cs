@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
-namespace StudentInfo.Utils.Dto
+namespace SchoolSysMvc.Dto
 {
     public class EnumCollection
     {
@@ -23,7 +18,7 @@ namespace StudentInfo.Utils.Dto
         NotAvailable = 2,
         OnATicket = 3
     }
-    
+
 
     public enum CaseStatus
     {
@@ -66,8 +61,4 @@ namespace StudentInfo.Utils.Dto
         [Description("Error Case")]
         ErrorCase = 2
     }
-
-
-
-    
 }

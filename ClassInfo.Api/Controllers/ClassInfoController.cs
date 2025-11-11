@@ -18,7 +18,7 @@ namespace ClassInfo.Api.Controllers
             public ClassInfoController(IConfiguration configuration, IMapper mapper, IClassService classService)
                 : base(configuration, mapper)
             {
-            _classService = _classService;
+            _classService = classService;
             }
 
             [HttpPost]

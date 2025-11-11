@@ -1,0 +1,27 @@
+﻿@model List<SchoolSysMvc.Dto.TeacherDto>
+
+<h2>All Teachers</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Qualification</th>
+            <th>Hire Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.TeacherId</td>
+                <td>@t.TeacherName</td>
+                <td>@t.TeacherEmail</td>
+                <td>@t.TeacherQualification</td>
+                <td>@t.TeacherHireDate?.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
