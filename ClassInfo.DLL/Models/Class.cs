@@ -5,7 +5,7 @@ namespace ClassInfo.DLL.Models;
 
 public partial class Class
 {
-    public int? Id { get; set; }
+    public int Id { get; set; }
 
     public int? ClsId { get; set; }
 

@@ -26,8 +26,7 @@ public partial class ClassesDbContext : DbContext
     {
         modelBuilder.Entity<Class>(entity =>
         {
-            entity.HasNoKey();
-
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.ClsId).HasColumnName("cls_Id");
             entity.Property(e => e.ClsName)
                 .HasMaxLength(50)
@@ -41,7 +40,6 @@ public partial class ClassesDbContext : DbContext
             entity.Property(e => e.ClsTeacherId)
                 .HasMaxLength(20)
                 .HasColumnName("cls_TeacherId");
-            entity.Property(e => e.Id).HasColumnName("id");
         });
 
         OnModelCreatingPartial(modelBuilder);

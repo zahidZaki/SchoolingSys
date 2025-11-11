@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using Teacherinfo.DLL.Db_Context;
-using Teacherinfo.BLL.RegisterServices;
+using ClassInfo.DLL.Db_Context;
+using ClassInfo.BLL.RegisterServices;
 using ClassInfo.DLL.Db_Context;
 
 var builder = WebApplication.CreateBuilder(args);
