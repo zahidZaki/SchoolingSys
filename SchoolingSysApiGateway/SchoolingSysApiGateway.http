@@ -1,0 +1,6 @@
+@SchoolingSysApiGateway_HostAddress = http://localhost:5167
+
+GET {{SchoolingSysApiGateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SchoolingSystem", "SchoolingSystem", "{5C818437-61A7-43E5-B8DF-07DE57518AB1}"
 EndProject
@@ -42,6 +42,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassInfo.Utils", "ClassInfo.Utils\ClassInfo.Utils.csproj", "{5B83300D-30B5-465E-B477-5EB43171D5C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentInfo.Utils", "StudentInfo.Utils\StudentInfo.Utils.csproj", "{B383858F-56C7-4362-B841-3322A2712D39}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIGateway", "APIGateway", "{B2964A18-9B3A-48CF-B4CB-CC5E8E0F262D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolingSysApiGateway", "SchoolingSysApiGateway\SchoolingSysApiGateway.csproj", "{9C5AEA50-8CC3-4C0C-BD01-E31209377BA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,6 +117,10 @@ Global
 		{B383858F-56C7-4362-B841-3322A2712D39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B383858F-56C7-4362-B841-3322A2712D39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B383858F-56C7-4362-B841-3322A2712D39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C5AEA50-8CC3-4C0C-BD01-E31209377BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C5AEA50-8CC3-4C0C-BD01-E31209377BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C5AEA50-8CC3-4C0C-BD01-E31209377BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C5AEA50-8CC3-4C0C-BD01-E31209377BA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,5 +142,6 @@ Global
 		{AC81F0F4-CBD3-401C-986C-40179908DB28} = {20F4F339-9761-46B4-9551-E9B97944B5BD}
 		{5B83300D-30B5-465E-B477-5EB43171D5C3} = {20F4F339-9761-46B4-9551-E9B97944B5BD}
 		{B383858F-56C7-4362-B841-3322A2712D39} = {A9390849-19CF-4AD5-A01E-6A1B62151CE9}
+		{9C5AEA50-8CC3-4C0C-BD01-E31209377BA2} = {B2964A18-9B3A-48CF-B4CB-CC5E8E0F262D}
 	EndGlobalSection
 EndGlobal
