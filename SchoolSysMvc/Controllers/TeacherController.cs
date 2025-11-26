@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SchoolSysMvc.Interfaces;
 using SchoolSysMvc.Services;
+using Teacherinfo.BLL.Interfaces;
 
 namespace SchoolSysMvc.Controllers
 {
