@@ -1,16 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Dtos\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
@@ -26,6 +20,18 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClassInfo.BLL\ClassInfo.BLL.csproj" />
+    <ProjectReference Include="..\ClassInfo.DLL\ClassInfo.DLL.csproj" />
+    <ProjectReference Include="..\ClassInfo.Utils\ClassInfo.Utils.csproj" />
+    <ProjectReference Include="..\StudentInfo.BLL\StudentInfo.BLL.csproj" />
+    <ProjectReference Include="..\StudentInfo.DLL\StudentInfo.DLL.csproj" />
+    <ProjectReference Include="..\StudentInfo.Utils\StudentInfo.Utils.csproj" />
+    <ProjectReference Include="..\Teacherinfo.BLL\Teacherinfo.BLL.csproj" />
+    <ProjectReference Include="..\Teacherinfo.DLL\Teacherinfo.DLL.csproj" />
+    <ProjectReference Include="..\Teacherinfo.Utils\Teacherinfo.Utils.csproj" />
   </ItemGroup>
 
 </Project>
